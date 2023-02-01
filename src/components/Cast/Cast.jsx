@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify/dist/components';
+import { toast } from 'react-toastify';
 import {
   CastSection,
   CastList,
@@ -20,6 +20,7 @@ export const Cast = () => {
       try {
         const movieCredits = await API.getMovieCredits(id);
         setMovieCredits(movieCredits);
+        console.log(movieCredits);
       } catch (error) {
         toast.error(`Oops something went wrong, try again.`);
       }
@@ -36,14 +37,14 @@ export const Cast = () => {
               <ActorInfo key={cast_id}>
                 <ActorPhoto
                   src={
-                    profile_path
+                    profile_path !== null
                       ? `https://image.tmdb.org/t/p/w500${profile_path}`
                       : 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'
                   }
                   alt={name}
-                      />
-                      <ActorName>{name}</ActorName>
-                      <Character>{character}</Character>
+                />
+                <ActorName>{name}</ActorName>
+                <Character>{character}</Character>
               </ActorInfo>
             )
           )}

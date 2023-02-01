@@ -1,15 +1,22 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy } from "react";
+// import { lazy } from "react";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Box } from "./App.styled";
 
-const SharedLayout = lazy(() => import('../SharedLayout'))
-const Home = lazy(() => import('../Home'))
-const Movies = lazy(() => import('../Movies'))
-const MovieDetails = lazy(() => import('../MovieDetails'))
-const Cast = lazy(() => import('../Cast'))
-const Reviews = lazy(() => import('../Reviews'))
+import SharedLayout from "components/SharedLayout/SharedLayout";
+import Home from "pages/Home/Home";
+import Movies from "pages/Movies/Movies";
+import MovieDetails from "pages/MovieDetails/MovieDetails";
+import Cast from "components/Cast/Cast";
+import Reviews from "components/Reviews/Reviews";
+
+// const SharedLayout = lazy(() => import('../SharedLayout'));
+// const Home = lazy(() => import('../../pages/Home'));
+// const Movies = lazy(() => import('../../pages/Movies'));
+// const MovieDetails = lazy(() => import('../../pages/MovieDetails'));
+// const Cast = lazy(() => import('../Reviews'));
+// const Reviews = lazy(() => import('../Reviews'));
 
 export const App = () => {
   return (

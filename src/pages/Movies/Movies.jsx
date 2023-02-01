@@ -7,14 +7,12 @@ import * as API from '../../services/api';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [searchParams, setSearchParams] = useState();
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const movieName = searchParams.get('query');
 
   useEffect(() => {
-    if (movieName.trim() === '') {
-      return;
-    }
+    if (!movieName) return;
 
     const fetchSearchMovie = async () => {
       try {
@@ -35,22 +33,22 @@ const Movies = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    const form = e.currenTarget;
+   
 
-    if (form.elements.query.value.trim() === '') {
+    if (evt.target.query.value.trim() === '') {
       toast.warn('Search field mustn`t be empty');
       return;
     }
-    setSearchParams({ query: form.elements.query.value });
-    form.reset();
+    setSearchParams({ query: evt.target.query.value });
+    evt.target.query.value = ''
   };
 
   return (
     <Main>
       <SearchBox onSubmit={handleSubmit} />
-      {movie && (
+      {movies && (
         <MovieList>
-          {movie.map(({ id, title }) => (
+          {movies.map(({ id, title }) => (
             <MovieItem key={id}>
               <Link to={`${id}`} state={{ from: location }}>
                 {title}
@@ -62,3 +60,6 @@ const Movies = () => {
     </Main>
   );
 };
+
+
+export default Movies

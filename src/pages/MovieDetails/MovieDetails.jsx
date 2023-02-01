@@ -6,7 +6,7 @@ import {
   Main,
   Box,
   MoviePoster,
-  MovieDetails,
+  MovieCredits,
   Title,
   UserScore,
   Overview,
@@ -21,7 +21,7 @@ import {
 import * as API from '../../services/api';
 
 const MovieDetails = () => {
-  const [movieDetails, setMovieDetails] = useState([]);
+  const [movieDetails, setMovieDetails] = useState(null);
   const { id } = useParams();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
@@ -51,7 +51,7 @@ const MovieDetails = () => {
           src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
           alt={movieDetails.Title}
         />
-        <MovieDetails>
+        <MovieCredits>
           <Title>{movieDetails.title}</Title>
           <UserScore>
             User score: {Math.round(movieDetails.vote_average * 10)}%
@@ -62,7 +62,7 @@ const MovieDetails = () => {
           <GenresContent>
             {movieDetails.genres.map(genre => genre.name).join(', ')}
           </GenresContent>
-        </MovieDetails>
+        </MovieCredits>
       </Box>
       <AdditionalInfo>
         <AdditionalInfoTitle>Additional information</AdditionalInfoTitle>

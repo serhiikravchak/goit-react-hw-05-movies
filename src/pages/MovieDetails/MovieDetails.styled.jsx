@@ -12,7 +12,7 @@ export const MoviePoster = styled.img`
   margin-right: 20px;
 `;
 
-export const MovieDetails = styled.div``;
+export const MovieCredits = styled.div``;
 
 export const Title = styled.h2`
   margin-bottom: 15px;

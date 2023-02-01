@@ -11,7 +11,7 @@ export const SearchBox = ({ onSubmit }) => {
       />
       <Button>
         <ButtonLabel>
-          <Search></Search>
+          Search
         </ButtonLabel>
       </Button>
     </SearchForm>
